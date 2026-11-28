@@ -11,8 +11,8 @@ if (!existsSync("node_modules/tsx/package.json")) {
   });
 }
 
-if (!existsSync("node_modules/.prisma/client/schema.prisma")) {
-  execFileSync(process.execPath, ["node_modules/prisma/build/index.js", "generate"], {
-    stdio: "inherit",
-  });
-}
+execFileSync(
+  process.execPath,
+  [process.env.npm_execpath, "exec", "--", "prisma", "generate"],
+  { stdio: "inherit" }
+);
